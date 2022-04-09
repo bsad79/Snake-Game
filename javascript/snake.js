@@ -29,7 +29,7 @@ function Snake(){
     this.eat = function(apple){
         if(snake.x == apple.x && snake.y == apple.y){
             this.total ++;
-            document.querySelector('.score').innerText = "Score: " + snake.total;
+            document.querySelector('.score').innerText = "Score: " + snake.total + " Max: " + getHighScore();
             return true;
         }
         return false;
@@ -40,8 +40,14 @@ function Snake(){
         this.y = 0;
         this.xSpeed = scale * 1;
         this.ySpeed = 0;
+        if (this.total > highScore) {
+            setHighScore(this.total)
+            document.querySelector('.score').innerText = "Score: " + 0 + " Max: " + getHighScore();
+        }
+        else {
+            document.querySelector('.score').innerText = "Score: " + 0 + " Max: " + getHighScore();
+        }
         this.total = 0;
-        document.querySelector('.score').innerText = "Score: " + snake.total;
         this.tail = [];
         apple.pickLocation();
         this.actualDirection = "right";

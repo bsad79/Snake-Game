@@ -10,7 +10,7 @@ var snake;
     snake = new Snake();
     apple = new Apple();
     apple.pickLocation(snake);
-    document.querySelector('.score').innerText = "Score: " + snake.total;
+    document.querySelector('.score').innerText = "Score: " + snake.total + " Max: " + getHighScore();
 
     window.setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
